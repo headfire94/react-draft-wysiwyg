@@ -8,6 +8,7 @@ const Basic = () => (<div className="rdw-storybook-root">
     ref={(ref) => {console.log('hey ref', ref.focusEditor())}}
     toolbarClassName="rdw-storybook-toolbar"
     wrapperClassName="rdw-storybook-wrapper"
+    label="label"
     editorClassName="rdw-storybook-editor"
   />
 </div>);
