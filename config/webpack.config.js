@@ -6,6 +6,9 @@ const precss = require('precss');
 
 const cssModuleLoader = [
   {
+    loader: "style-loader"
+  },
+  {
     loader: 'css-loader',
     options: {
       importLoaders: 1,
@@ -57,8 +60,15 @@ module.exports = {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /immutable\.js$|draftjs-utils\.js$/ },
       {
-        test: /\.css$/,
+        test: /\.module\.css$/,
         loader: cssModuleLoader,
+      },
+      {
+        test: /^((?!module\.).)*\.css$/,
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader',
+        }),
       },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
       {

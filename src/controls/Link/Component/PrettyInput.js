@@ -1,6 +1,6 @@
 // @flow
 import * as React from 'react';
-import styles from './PrettyInput.css';
+import styles from './PrettyInput.module.css';
 
 export type Props = {
   className?: string,
