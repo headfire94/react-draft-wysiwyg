@@ -527,43 +527,45 @@ export default class WysiwygEditor extends Component {
               React.cloneElement(button, { key: index, ...controlProps }))}
           </div >
         )}
-        <div
-          ref={this.setWrapperReference}
-          className={classNames(editorClassName, 'rdw-editor-main')}
-          style={editorStyle}
-          onClick={this.focusEditor}
-          onFocus={this.onEditorFocus}
-          onBlur={this.onEditorBlur}
-          onKeyDown={KeyDownHandler.onKeyDown}
-          onMouseDown={this.onEditorMouseDown}
-        >
-          {
-            label &&
-            <div
-              className={classNames('rdw-editor-label', {
-                'rdw-editor-label_focused': editorFocused || editorState.getCurrentContent().hasText(),
-              })}
-            >{label}
-            </div >
-          }
-          <Editor
-            ref={this.setEditorReference}
-            onTab={this.onTab}
-            onUpArrow={this.onUpDownArrow}
-            onDownArrow={this.onUpDownArrow}
-            editorState={editorState}
-            onChange={this.onChange}
-            blockStyleFn={blockStyleFn}
-            customStyleMap={getCustomStyleMap()}
-            handleReturn={this.handleReturn}
-            handlePastedText={this.handlePastedText}
-            blockRendererFn={this.blockRendererFn}
-            handleKeyCommand={this.handleKeyCommand}
-            ariaLabel={ariaLabel || 'rdw-editor'}
-            blockRenderMap={blockRenderMap}
-            {...this.editorProps}
-          />
-        </div >
+        <div className="rdw-editor-main__wrapper">
+          <div
+            ref={this.setWrapperReference}
+            className={classNames(editorClassName, 'rdw-editor-main')}
+            style={editorStyle}
+            onClick={this.focusEditor}
+            onFocus={this.onEditorFocus}
+            onBlur={this.onEditorBlur}
+            onKeyDown={KeyDownHandler.onKeyDown}
+            onMouseDown={this.onEditorMouseDown}
+          >
+            {
+              label &&
+              <div
+                className={classNames('rdw-editor-label', {
+                  'rdw-editor-label_focused': editorFocused || editorState.getCurrentContent().hasText(),
+                })}
+              >{label}
+              </div >
+            }
+            <Editor
+              ref={this.setEditorReference}
+              onTab={this.onTab}
+              onUpArrow={this.onUpDownArrow}
+              onDownArrow={this.onUpDownArrow}
+              editorState={editorState}
+              onChange={this.onChange}
+              blockStyleFn={blockStyleFn}
+              customStyleMap={getCustomStyleMap()}
+              handleReturn={this.handleReturn}
+              handlePastedText={this.handlePastedText}
+              blockRendererFn={this.blockRendererFn}
+              handleKeyCommand={this.handleKeyCommand}
+              ariaLabel={ariaLabel || 'rdw-editor'}
+              blockRenderMap={blockRenderMap}
+              {...this.editorProps}
+            />
+          </div >
+        </div>
       </div >
     );
   }

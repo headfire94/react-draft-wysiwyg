@@ -290,20 +290,25 @@
 .rdw-link-dropdownPlaceholder {
   margin-left: 8px;
 }
+.form-control-margin {
+  margin-bottom: 12px;
+}
 .rdw-link-modal {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 4px 30px rgba(0,0,0,.2);
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 15px;
+  text-align: left;
   position: absolute;
   top: 35px;
   left: 5px;
   display: flex;
   flex-direction: column;
   width: 235px;
-  height: 205px;
-  border: 1px solid #F1F1F1;
   padding: 15px;
-  border-radius: 2px;
   z-index: 100;
-  background: white;
-  box-shadow: 3px 3px 5px #BFBDBD;
 }
 .rdw-link-modal-label {
   font-size: 15px;
@@ -357,6 +362,128 @@
 }
 .rdw-history-dropdown {
   width: 50px;
+}
+.inputWrapper {
+  border: solid 1px #dddddd;
+  display: flex;
+  align-items: center;
+  color: #aaaaaa;
+  border-radius: 2px;
+  background-color: #ffffff;
+  padding: 1px 14px 1px 1px;
+}
+
+.inputWrapperReadOnly {
+  cursor: pointer;
+}
+.inputWrapperReadOnly input {
+  cursor: pointer;
+}
+.inputWrapperReadOnly span {
+  min-height: 44px;
+}
+
+.errorInputWrapper {
+  border: solid 1px #dddddd;
+  display: flex;
+  align-items: center;
+  color: #aaaaaa;
+  border-radius: 2px;
+  background-color: #ffffff;
+  padding: 1px 14px 1px 1px;
+  border-color: rgba(223, 77, 48, 0.5);
+}
+
+.inputWrapperDisabled {
+  border: solid 1px #dddddd;
+  display: flex;
+  align-items: center;
+  color: #aaaaaa;
+  border-radius: 2px;
+  padding: 1px 14px 1px 1px;
+  background-color: #f7f7f7;
+}
+
+.wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.input {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 20px 2px 4px 12px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #222;
+  background: #fff;
+}
+.input:focus, .input:hover {
+  border: none;
+  outline: none;
+}
+.input::-webkit-outer-spin-button, .input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.input:read-only {
+  cursor: pointer;
+}
+
+.inputDisabled {
+  flex: 1;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 20px 2px 4px 12px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  border: none;
+  outline: none;
+  width: 100%;
+  color: #222;
+  background-color: #f7f7f7;
+}
+
+.label {
+  font-weight: 400;
+  position: absolute;
+  top: 16px;
+  line-height: 1.4em;
+  margin-bottom: 0;
+  left: 14px;
+  font-size: 14px;
+  display: block;
+  width: calc(100% - 25px);
+  text-align: left;
+  padding: 0;
+  pointer-events: none;
+  transition: transform .1s, font-size 0.1s, color .5s;
+  color: #aaa;
+}
+
+.labelFocus {
+  color: #459f57;
+}
+
+.labelFilled {
+  font-size: 11px;
+  transform: translate3d(0, -8px, 0);
+}
+
+.labelError {
+  color: #df4d30;
+}
+
+.addon {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 0 0 14px;
 }
 .rdw-embedded-wrapper {
   display: flex;
