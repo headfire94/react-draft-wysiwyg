@@ -5,6 +5,24 @@ const precss = require('precss');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 
+const cssModuleLoader = [
+  {
+    loader: "style-loader"
+  },
+  {
+    loader: "css-loader",
+    options: {
+      importLoaders: 1,
+      autoprefixer: false,
+      modules: true,
+      localIdentName: "[local]"
+    }
+  },
+  {
+    loader: "postcss-loader"
+  }
+]
+
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
   entry: [
@@ -26,10 +44,7 @@ module.exports = {
       {
         test: /\.css$/,
         exclude: /Draft\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader"
-        }),
+        loader: cssModuleLoader,
       },
       {
         test: /Draft\.css$/,

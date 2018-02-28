@@ -8,13 +8,29 @@ const path = require('path');
 // IMPORTANT
 // When you add this file, we won't add the default configurations which is similar
 // to "React Create App". This only has babel loader to load JavaScript.
-
+const cssModuleLoader = [
+  {
+    loader: "style-loader"
+  },
+  {
+    loader: "css-loader",
+    options: {
+      importLoaders: 1,
+      autoprefixer: false,
+      modules: true,
+      localIdentName: "[local]"
+    }
+  },
+  {
+    loader: "postcss-loader"
+  }
+]
 module.exports = {
   module: {
     rules: [
       {
         test: /\.css$/,
-        loaders: ['style-loader', 'css-loader'],
+        loader: cssModuleLoader,
         include: path.resolve(__dirname, '../'),
       },
       {

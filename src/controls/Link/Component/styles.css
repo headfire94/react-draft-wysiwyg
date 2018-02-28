@@ -15,20 +15,25 @@
 .rdw-link-dropdownPlaceholder {
   margin-left: 8px;
 }
+.form-control-margin {
+  margin-bottom: 12px;
+}
 .rdw-link-modal {
+  background: #fff;
+  border-radius: 3px;
+  box-shadow: 0 4px 30px rgba(0,0,0,.2);
+  font-size: 13px;
+  font-weight: 400;
+  margin-top: 15px;
+  text-align: left;
   position: absolute;
   top: 35px;
   left: 5px;
   display: flex;
   flex-direction: column;
   width: 235px;
-  height: 205px;
-  border: 1px solid #F1F1F1;
   padding: 15px;
-  border-radius: 2px;
   z-index: 100;
-  background: white;
-  box-shadow: 3px 3px 5px #BFBDBD;
 }
 .rdw-link-modal-label {
   font-size: 15px;
