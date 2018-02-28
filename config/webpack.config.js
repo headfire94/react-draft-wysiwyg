@@ -4,6 +4,25 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 const precss = require('precss');
 
+const cssModuleLoader = [
+  {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 1,
+      autoprefixer: true,
+      modules: true,
+      localIdentName: '[local]',
+    },
+  },
+  {
+    loader: 'postcss-loader',
+  },
+];
+const mainCSS = new ExtractTextPlugin({
+  filename: 'react-draft-wysiwyg.css',
+  allChunks: true,
+  ignoreOrder: true
+});
 module.exports = {
   devtool: 'source-map',
   entry: [
@@ -32,22 +51,14 @@ module.exports = {
         warnings: false,
       },
     }),
-    new ExtractTextPlugin('react-draft-wysiwyg.css'),
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [autoprefixer, precss],
-      },
-    }),
+    mainCSS,
   ],
   module: {
     loaders: [
       { test: /\.js$/, loader: 'babel-loader', exclude: /immutable\.js$|draftjs-utils\.js$/ },
       {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader?modules&importLoaders=1&localIdentName=[local]!postcss-loader',
-        }),
+        loader: cssModuleLoader,
       },
       { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' },
       {
