@@ -458,6 +458,15 @@ export default class WysiwygEditor extends Component {
       event.preventDefault();
     }
   }
+  hasContent = (content) => {
+    const raw = convertToRaw(content);
+    return raw.blocks && raw.blocks[0] && raw.blocks[0].type !== 'unstyled';
+  }
+  hasChanges = () => {
+    const { editorState } = this.state;
+    const content = editorState.getCurrentContent();
+    return content.hasText() || this.hasContent(content);
+  }
 
   render() {
     const { editorState, editorFocused, toolbar } = this.state;
@@ -542,7 +551,7 @@ export default class WysiwygEditor extends Component {
               label &&
               <div
                 className={classNames('rdw-editor-label', {
-                  'rdw-editor-label_focused': editorFocused || editorState.getCurrentContent().hasText(),
+                  'rdw-editor-label_focused': editorFocused || this.hasChanges(),
                 })}
               >{label}
               </div >

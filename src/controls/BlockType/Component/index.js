@@ -36,15 +36,15 @@ class LayoutComponent extends Component {
   }
 
   getBlockTypes = translations => [
-    { label: 'Normal', displayName: translations['components.controls.blocktype.normal'] },
-    { label: 'H1', displayName: translations['components.controls.blocktype.h1'] },
-    { label: 'H2', displayName: translations['components.controls.blocktype.h2'] },
-    { label: 'H3', displayName: translations['components.controls.blocktype.h3'] },
-    { label: 'H4', displayName: translations['components.controls.blocktype.h4'] },
-    { label: 'H5', displayName: translations['components.controls.blocktype.h5'] },
-    { label: 'H6', displayName: translations['components.controls.blocktype.h6'] },
-    { label: 'Blockquote', displayName: translations['components.controls.blocktype.blockquote'] },
-    { label: 'Code', displayName: translations['components.controls.blocktype.code'] },
+    { label: 'Normal', title: translations['components.controls.blocktype.title.normal'], displayName: translations['components.controls.blocktype.normal'] },
+    { label: 'H1', title: translations['components.controls.blocktype.title.h1'], displayName: translations['components.controls.blocktype.h1'] },
+    { label: 'H2', title: translations['components.controls.blocktype.title.h2'], displayName: translations['components.controls.blocktype.h2'] },
+    { label: 'H3', title: translations['components.controls.blocktype.title.h3'], displayName: translations['components.controls.blocktype.h3'] },
+    { label: 'H4', title: translations['components.controls.blocktype.title.h4'], displayName: translations['components.controls.blocktype.h4'] },
+    { label: 'H5', title: translations['components.controls.blocktype.title.h5'], displayName: translations['components.controls.blocktype.h5'] },
+    { label: 'H6', title: translations['components.controls.blocktype.title.h6'], displayName: translations['components.controls.blocktype.h6'] },
+    { label: 'Blockquote', title: translations['components.controls.blocktype.title.blockquote'], displayName: translations['components.controls.blocktype.blockquote'] },
+    { label: 'Code', title: translations['components.controls.blocktype.title.code'], displayName: translations['components.controls.blocktype.code'] },
   ];
 
   renderFlat(blocks: Array<Object>): void {
@@ -56,12 +56,12 @@ class LayoutComponent extends Component {
             (<Option
               key={index}
               value={block.label}
+              title={block.title}
               active={blockType === block.label}
               onClick={onChange}
             >
               {block.displayName}
-            </Option>),
-          )
+             </Option>))
         }
       </div>
     );
@@ -97,12 +97,13 @@ class LayoutComponent extends Component {
           {
             blocks.map((block, index) =>
               (<DropdownOption
+                title={block.title}
                 active={blockType === block.label}
                 value={block.label}
                 key={index}
               >
                 {block.displayName}
-              </DropdownOption>))
+               </DropdownOption>))
           }
         </Dropdown>
       </div>
